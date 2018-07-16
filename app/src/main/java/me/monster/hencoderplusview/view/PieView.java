@@ -50,16 +50,20 @@ public class PieView extends View {
         mPaint.setColor(Color.parseColor(colorArray[0]));
         canvas.drawArc(mActRect, 0, 170, true, mPaint);
 
+        float offX = (float) Math.cos(Math.PI * 60 / 180) * (getWidth() - padding) / 2;
+        float offY = (float) Math.sin(Math.PI * 60 / 180) * (getWidth() - padding) / 2;
+        mActRect.offset(offX, offY);
         mPaint.setColor(Color.parseColor(colorArray[1]));
         canvas.drawArc(mActRect, 170, 60, true, mPaint);
+        mActRect.offset(-offX, -offY);
 
         mPaint.setColor(Color.parseColor(colorArray[2]));
         canvas.drawArc(mActRect, 230, 70, true, mPaint);
 
-        canvas.save();
-        canvas.translate(10, -10);
+//        canvas.save();
+//        canvas.translate(10, -10);
         mPaint.setColor(Color.parseColor(colorArray[3]));
         canvas.drawArc(mActRect, 300, 60, true, mPaint);
-        canvas.restore();
+//        canvas.restore();
     }
 }

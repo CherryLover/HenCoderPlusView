@@ -28,6 +28,7 @@ public class SportsView extends View {
     private String doneColor = "#f57c00";
     private RectF mArcRectF = new RectF();
     private Random mRandom = new Random(System.currentTimeMillis());
+    private float value = 0;
 
     public SportsView(Context context) {
         super(context);
@@ -59,11 +60,7 @@ public class SportsView extends View {
 
         mArcRectF.set(getWidth() / 2 - circleRadius + padding, getHeight() / 2 - circleRadius + padding, getWidth() / 2 + circleRadius - padding, getHeight() / 2 + circleRadius - padding);
 
-        int nowPosition = mRandom.nextInt(360);
-        if (nowPosition < 0) {
-            nowPosition = -nowPosition;
-        }
-        canvas.drawArc(mArcRectF, 90, 244, false, mPaint);
+        canvas.drawArc(mArcRectF, 90, (value / 100) * 360, false, mPaint);
 
 
         mPaint.setColor(Color.parseColor("#E91E63"));
@@ -78,6 +75,15 @@ public class SportsView extends View {
         mPaint.setTextAlign(Paint.Align.CENTER);
 
         // TODO: 2018/7/16 文字位置居中显示，而不是，默认的 0 0
-        canvas.drawText("已完成:"  + "67%", centerX, centerY+ValueUtil.dpToPixel(17), mPaint);
+        canvas.drawText((int) value + "%", centerX, centerY + ValueUtil.dpToPixel(17), mPaint);
+    }
+
+    public void setValue(float value) {
+        this.value = value;
+        invalidate();
+    }
+
+    public float getValue() {
+        return value;
     }
 }

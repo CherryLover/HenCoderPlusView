@@ -56,9 +56,13 @@ public class RoundAvatar extends View {
 
         // TODO: 2018/7/16 移动画布到界面中心点
 
+        mPaint.setColor(Color.parseColor("#FFEB3B"));
+        canvas.drawCircle(avatarBitmap.getWidth() / 2, avatarBitmap.getHeight() / 2, avatarBitmap.getWidth() / 2, mPaint);
+
+
         mRectF.set(0, 0, getWidth(), getHeight());
         int saveLayer = canvas.saveLayer(mRectF, mPaint);
-        canvas.drawCircle(avatarBitmap.getWidth() / 2, avatarBitmap.getHeight() / 2, avatarBitmap.getWidth() / 2, mPaint);
+        canvas.drawCircle(avatarBitmap.getWidth() / 2, avatarBitmap.getHeight() / 2, avatarBitmap.getWidth() / 2 - ValueUtil.dpToPixel(5), mPaint);
 //        canvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2 - padding, mPaint);
 
         mPaint.setXfermode(xMode);
