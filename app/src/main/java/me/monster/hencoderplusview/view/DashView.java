@@ -48,27 +48,25 @@ public class DashView extends View {
     private void init() {
         dashRectF.set(padding, padding, getWidth() - padding, getHeight() - padding);
         mDashPath.addRect(0, 0, ValueUtil.dpToPixel(5), ValueUtil.dpToPixel(2), Path.Direction.CCW);
-        PathMeasure pathMeasure = new PathMeasure(mDashPath, false);
+        PathMeasure pathMeasure = new PathMeasure(mArcPath, false);
         mRectPathDash = new PathDashPathEffect(mArcPath, 0, pathMeasure.getLength() / 20, PathDashPathEffect.Style.ROTATE);
 
         mPaint.setColor(Color.parseColor("#bdbdbd"));
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(strokeWidth);
         mPaint.setStrokeCap(Paint.Cap.SQUARE);
-
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         init();
-        mArcPath.addArc(dashRectF, 120, 300);
-        canvas.drawPath(mArcPath, mPaint);
+//        mArcPath.addArc(dashRectF, 120, 300);
+//        canvas.drawPath(mArcPath, mPaint);
 
         mPaint.setPathEffect(mRectPathDash);
         mArcPath.addArc(dashRectF, 120, 300);
         canvas.drawPath(mArcPath, mPaint);
-//        mPaint.setPathEffect(null);
-//        canvas.drawArc(dashRectF, 120, 300, false, mPaint);
+        mPaint.setPathEffect(null);
     }
 }
