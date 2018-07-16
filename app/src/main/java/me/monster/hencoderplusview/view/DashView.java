@@ -64,6 +64,9 @@ public class DashView extends View {
 //        mArcPath.addArc(dashRectF, 120, 300);
 //        canvas.drawPath(mArcPath, mPaint);
 
+
+        // TODO: 2018/7/16 刻度的绘制
+
         mPaint.setPathEffect(mRectPathDash);
         mArcPath.addArc(dashRectF, 120, 300);
         canvas.drawPath(mArcPath, mPaint);

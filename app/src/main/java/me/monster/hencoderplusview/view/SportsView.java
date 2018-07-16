@@ -23,10 +23,11 @@ public class SportsView extends View {
     Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private float circleRadius = ValueUtil.dpToPixel(170);
     private float strokeWidth = ValueUtil.dpToPixel(20);
+    private float padding = ValueUtil.dpToPixel(8);
     private String totalColor = "#bdbdbd";
     private String doneColor = "#f57c00";
     private RectF mArcRectF = new RectF();
-    private Random mRandom = new Random((long) circleRadius);
+    private Random mRandom = new Random(System.currentTimeMillis());
 
     public SportsView(Context context) {
         super(context);
@@ -51,17 +52,32 @@ public class SportsView extends View {
         mPaint.setStrokeWidth(strokeWidth);
         mPaint.setColor(Color.parseColor(totalColor));
 
-        canvas.drawCircle(getWidth() / 2, getHeight() / 2, circleRadius, mPaint);
+        canvas.drawCircle(getWidth() / 2, getHeight() / 2, circleRadius - padding, mPaint);
 
         mPaint.setStrokeCap(Paint.Cap.ROUND);
         mPaint.setColor(Color.parseColor(doneColor));
 
-        mArcRectF.set(getWidth() / 2 - circleRadius, getHeight() / 2 - circleRadius, getWidth() / 2 + circleRadius, getHeight() / 2 + circleRadius);
+        mArcRectF.set(getWidth() / 2 - circleRadius + padding, getHeight() / 2 - circleRadius + padding, getWidth() / 2 + circleRadius - padding, getHeight() / 2 + circleRadius - padding);
 
         int nowPosition = mRandom.nextInt(360);
         if (nowPosition < 0) {
             nowPosition = -nowPosition;
         }
-        canvas.drawArc(mArcRectF, 90, nowPosition, false, mPaint);
+        canvas.drawArc(mArcRectF, 90, 244, false, mPaint);
+
+
+        mPaint.setColor(Color.parseColor("#E91E63"));
+        float centerX = (float) (getWidth() / 2);
+        float centerY = (float) (getHeight() / 2);
+
+        mPaint.reset();
+
+        mPaint.setTextSize(ValueUtil.dpToPixel(34));
+        mPaint.setColor(Color.RED);
+        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setTextAlign(Paint.Align.CENTER);
+
+        // TODO: 2018/7/16 文字位置居中显示，而不是，默认的 0 0
+        canvas.drawText("已完成:"  + "67%", centerX, centerY+ValueUtil.dpToPixel(17), mPaint);
     }
 }

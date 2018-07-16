@@ -43,6 +43,8 @@ public class PieView extends View {
         super.onDraw(canvas);
         mPaint.setStyle(Paint.Style.FILL);
 
+        // TODO: 2018/7/16 偏移量计算
+
         mActRect.set(0 + padding, 0 + padding, getWidth() - padding, getHeight() - padding);
 
         mPaint.setColor(Color.parseColor(colorArray[0]));
