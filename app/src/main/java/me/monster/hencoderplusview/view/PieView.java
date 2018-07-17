@@ -9,6 +9,8 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.util.Random;
+
 import me.monster.hencoderplusview.util.ValueUtil;
 
 /**
@@ -20,8 +22,11 @@ public class PieView extends View {
     private Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private RectF mActRect = new RectF();
     private float padding = ValueUtil.dpToPixel(8);
-    private float offSetLength = ValueUtil.dpToPixel(10);
+    private float offSetLength = ValueUtil.dpToPixel(15);
     private String[] colorArray = {"#c6ff00", "#40c4ff", "#ff80ab", "#ffeb3b"};
+    private int[] angles = {90, 120, 75, 75};
+    private Random mRandom = new Random(System.currentTimeMillis());
+    private int outAngels = mRandom.nextInt(angles.length);
 
     public PieView(Context context) {
         super(context);
@@ -46,22 +51,20 @@ public class PieView extends View {
 
         mActRect.set(0 + padding, 0 + padding, getWidth() - padding, getHeight() - padding);
 
-        mPaint.setColor(Color.parseColor(colorArray[0]));
-        canvas.drawArc(mActRect, 0, 170, true, mPaint);
-
-
-        mActRect.offset(offSetLength * (float) Math.sin(200), offSetLength * (float) Math.cos(200));
-        mPaint.setColor(Color.parseColor(colorArray[1]));
-        canvas.drawArc(mActRect, 170, 60, true, mPaint);
-        mActRect.offset(-offSetLength * (float) Math.sin(200), -offSetLength * (float) Math.cos(200));
-
-        mPaint.setColor(Color.parseColor(colorArray[2]));
-        canvas.drawArc(mActRect, 230, 70, true, mPaint);
-
-//        canvas.save();
-//        canvas.translate(10, -10);
-        mPaint.setColor(Color.parseColor(colorArray[3]));
-        canvas.drawArc(mActRect, 300, 60, true, mPaint);
-//        canvas.restore();
+        int totalAngle = 0;
+        for (int i = 0; i < angles.length; i++) {
+            mPaint.setColor(Color.parseColor(colorArray[i]));
+            if (i == outAngels) {
+                float offSetX = (float) (Math.cos(Math.toRadians(totalAngle + angles[i] / 2)) * offSetLength);
+                float offSetY = (float) (Math.sin(Math.toRadians(totalAngle + angles[i] / 2)) * offSetLength);
+                mActRect.offset(offSetX, offSetY);
+                canvas.drawArc(mActRect, totalAngle, angles[i], true, mPaint);
+                mActRect.offset(-offSetX, -offSetY);
+            } else {
+                canvas.drawArc(mActRect, totalAngle, angles[i], true, mPaint);
+            }
+            totalAngle += angles[i];
+        }
     }
+
 }

@@ -30,7 +30,7 @@ public class DashView extends View {
     private final int START_ANGLE = 135;
     private final int SWEEP_ANGELE = 270;
 
-    private final int TOTAL_DASH = 5;
+    private final int TOTAL_DASH = 10;
 
     PathMeasure pathMeasure = new PathMeasure();
     private Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -95,7 +95,7 @@ public class DashView extends View {
     }
 
     private float getAngle() {
-        return (value - 1) / TOTAL_DASH * SWEEP_ANGELE + START_ANGLE;
+        return value / TOTAL_DASH * SWEEP_ANGELE + START_ANGLE;
     }
 
     /**

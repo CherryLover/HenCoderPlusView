@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
-import android.graphics.RectF;
 import android.graphics.Xfermode;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -24,10 +23,9 @@ import me.monster.hencoderplusview.util.ValueUtil;
  */
 public class RoundAvatar extends View {
 
-    RectF mRectF = new RectF();
     private Bitmap avatarBitmap;
     private Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private float padding = ValueUtil.dpToPixel(10);
+    private float padding = ValueUtil.dpToPixel(5);
     private Xfermode xMode = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);
 
 
@@ -51,19 +49,16 @@ public class RoundAvatar extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         mPaint.setStyle(Paint.Style.FILL);
-        mPaint.setColor(Color.parseColor("#bdbdbd"));
 
 
-        // TODO: 2018/7/16 移动画布到界面中心点
+        canvas.translate(getWidth() / 4, getHeight() / 4);
 
-        mPaint.setColor(Color.parseColor("#FFEB3B"));
+        mPaint.setColor(Color.parseColor("#e9d085"));
         canvas.drawCircle(avatarBitmap.getWidth() / 2, avatarBitmap.getHeight() / 2, avatarBitmap.getWidth() / 2, mPaint);
 
 
-        mRectF.set(0, 0, getWidth(), getHeight());
-        int saveLayer = canvas.saveLayer(mRectF, mPaint);
-        canvas.drawCircle(avatarBitmap.getWidth() / 2, avatarBitmap.getHeight() / 2, avatarBitmap.getWidth() / 2 - ValueUtil.dpToPixel(5), mPaint);
-//        canvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2 - padding, mPaint);
+        int saveLayer = canvas.saveLayer(0, 0, getWidth(), getHeight(), mPaint);
+        canvas.drawCircle(avatarBitmap.getWidth() / 2, avatarBitmap.getHeight() / 2, avatarBitmap.getWidth() / 2 - padding, mPaint);
 
         mPaint.setXfermode(xMode);
         canvas.drawBitmap(avatarBitmap, 0, 0, mPaint);
@@ -71,9 +66,7 @@ public class RoundAvatar extends View {
 
         canvas.restoreToCount(saveLayer);
 
-//        mPaint.setColor(Color.parseColor("#ef6c00"));
-//        canvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2, mPaint);
-
+        canvas.translate((getWidth() / 4), -(getHeight() / 4));
     }
 
     @Override
@@ -83,16 +76,15 @@ public class RoundAvatar extends View {
         getBitMap(getWidth());
     }
 
-    // TODO: 2018/7/16 图片尺寸操作
 
     private void getBitMap(int width) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         options.inMutable = true;
-        avatarBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.test_avatar, options);
+        avatarBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wx_avatat, options);
         options.inJustDecodeBounds = false;
         options.inDensity = options.outWidth;
         options.inTargetDensity = width;
-        avatarBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.test_avatar, options);
+        avatarBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wx_avatat, options);
     }
 }

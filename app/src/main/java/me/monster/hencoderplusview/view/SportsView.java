@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -29,6 +30,8 @@ public class SportsView extends View {
     private RectF mArcRectF = new RectF();
     private Random mRandom = new Random(System.currentTimeMillis());
     private float value = 0;
+    private Rect boundsRect = new Rect();
+    private String text;
 
     public SportsView(Context context) {
         super(context);
@@ -73,17 +76,17 @@ public class SportsView extends View {
         mPaint.setColor(Color.RED);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setTextAlign(Paint.Align.CENTER);
+        text = (int) value + "%";
+        mPaint.getTextBounds(text, 0, text.length(), boundsRect);
+        canvas.drawText(text, centerX, centerY - (boundsRect.top + boundsRect.bottom) / 2, mPaint);
+    }
 
-        // TODO: 2018/7/16 文字位置居中显示，而不是，默认的 0 0
-        canvas.drawText((int) value + "%", centerX, centerY + ValueUtil.dpToPixel(17), mPaint);
+    public float getValue() {
+        return value;
     }
 
     public void setValue(float value) {
         this.value = value;
         invalidate();
-    }
-
-    public float getValue() {
-        return value;
     }
 }

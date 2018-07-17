@@ -1,11 +1,11 @@
 package me.monster.hencoderplusview;
 
-import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
+import android.view.KeyEvent;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import me.monster.hencoderplusview.view.DashView;
 import me.monster.hencoderplusview.view.PieView;
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText etValue;
     private SportsView spView;
     private PieView mPieView;
-    private Button btnClick;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,25 +29,18 @@ public class MainActivity extends AppCompatActivity {
 
 //        mDashView = findViewById(R.id.dash_board);
         etValue = findViewById(R.id.et_value);
-//        spView = findViewById(R.id.dash_board);
-        btnClick = findViewById(R.id.btn_set);
+        spView = findViewById(R.id.dash_board);
 
-        btnClick.setOnClickListener(new View.OnClickListener() {
+        etValue.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public void onClick(View v) {
-//                ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(spView, "value", 0, Float.parseFloat(etValue.getText().toString().trim()));
-//                objectAnimator.start();
-                ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(mDashView, "value", 0, Float.parseFloat(etValue.getText().toString().trim()));
-                objectAnimator.start();
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT) {
+                    String strEtValue = etValue.getText().toString().trim();
+//                    mDashView.setValue(Integer.parseInt(strEtValue));
+                    spView.setValue(Integer.parseInt(strEtValue));
+                }
+                return false;
             }
         });
-
-    }
-
-    public void setValue(View view) {
-        String strEtValue = etValue.getText().toString().trim();
-//        mDashView.setValue(Integer.parseInt(strEtValue));
-
-//        spView.setValue(Integer.parseInt(etValue.getText().toString().trim()));
     }
 }
