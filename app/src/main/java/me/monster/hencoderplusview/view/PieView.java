@@ -20,6 +20,7 @@ public class PieView extends View {
     private Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private RectF mActRect = new RectF();
     private float padding = ValueUtil.dpToPixel(8);
+    private float offSetLength = ValueUtil.dpToPixel(10);
     private String[] colorArray = {"#c6ff00", "#40c4ff", "#ff80ab", "#ffeb3b"};
 
     public PieView(Context context) {
@@ -43,19 +44,16 @@ public class PieView extends View {
         super.onDraw(canvas);
         mPaint.setStyle(Paint.Style.FILL);
 
-        // TODO: 2018/7/16 偏移量计算
-
         mActRect.set(0 + padding, 0 + padding, getWidth() - padding, getHeight() - padding);
 
         mPaint.setColor(Color.parseColor(colorArray[0]));
         canvas.drawArc(mActRect, 0, 170, true, mPaint);
 
-        float offX = (float) Math.cos(Math.PI * 60 / 180) * (getWidth() - padding) / 2;
-        float offY = (float) Math.sin(Math.PI * 60 / 180) * (getWidth() - padding) / 2;
-        mActRect.offset(offX, offY);
+
+        mActRect.offset(offSetLength * (float) Math.sin(200), offSetLength * (float) Math.cos(200));
         mPaint.setColor(Color.parseColor(colorArray[1]));
         canvas.drawArc(mActRect, 170, 60, true, mPaint);
-        mActRect.offset(-offX, -offY);
+        mActRect.offset(-offSetLength * (float) Math.sin(200), -offSetLength * (float) Math.cos(200));
 
         mPaint.setColor(Color.parseColor(colorArray[2]));
         canvas.drawArc(mActRect, 230, 70, true, mPaint);

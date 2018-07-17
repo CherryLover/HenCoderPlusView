@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <me.monster.hencoderplusview.view.DashView
+    <me.monster.hencoderplusview.view.PieView
         android:id="@+id/dash_board"
         android:layout_width="350dp"
         android:layout_height="350dp"

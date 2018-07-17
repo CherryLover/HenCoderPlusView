@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import me.monster.hencoderplusview.view.DashView;
+import me.monster.hencoderplusview.view.PieView;
 import me.monster.hencoderplusview.view.SportsView;
 
 /**
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private DashView mDashView;
     private EditText etValue;
     private SportsView spView;
+    private PieView mPieView;
     private Button btnClick;
 
     @Override
@@ -25,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mDashView = findViewById(R.id.dash_board);
+//        mDashView = findViewById(R.id.dash_board);
         etValue = findViewById(R.id.et_value);
 //        spView = findViewById(R.id.dash_board);
         btnClick = findViewById(R.id.btn_set);
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void setValue(View view) {
         String strEtValue = etValue.getText().toString().trim();
-        mDashView.setValue(Integer.parseInt(strEtValue));
+//        mDashView.setValue(Integer.parseInt(strEtValue));
 
 //        spView.setValue(Integer.parseInt(etValue.getText().toString().trim()));
     }
