@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
 //        mDashView = findViewById(R.id.dash_board);
         etValue = findViewById(R.id.et_value);
-        spView = findViewById(R.id.dash_board);
+//        spView = findViewById(R.id.dash_board);
 
         etValue.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT) {
                     String strEtValue = etValue.getText().toString().trim();
 //                    mDashView.setValue(Integer.parseInt(strEtValue));
-                    spView.setValue(Integer.parseInt(strEtValue));
+//                    spView.setValue(Integer.parseInt(strEtValue));
                 }
                 return false;
             }
