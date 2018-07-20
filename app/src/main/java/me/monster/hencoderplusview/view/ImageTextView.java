@@ -7,7 +7,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import me.monster.hencoderplusview.R;
@@ -77,7 +76,6 @@ public class ImageTextView extends View {
     }
 
     private void getBitmap(int imageWidth) {
-        Log.e(TAG, "getBitmap: -----------");
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         options.inMutable = true;
@@ -86,6 +84,5 @@ public class ImageTextView extends View {
         options.inDensity = options.outWidth;
         options.inTargetDensity = imageWidth;
         mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wx_avatat, options);
-        Log.e(TAG, "getBitmap: -----------");
     }
 }

@@ -1,46 +1,73 @@
 package me.monster.hencoderplusview;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
-import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
-import android.widget.TextView;
 
-import me.monster.hencoderplusview.view.DashView;
-import me.monster.hencoderplusview.view.PieView;
-import me.monster.hencoderplusview.view.SportsView;
+import me.monster.hencoderplusview.fragment.DashFragment;
+import me.monster.hencoderplusview.fragment.ImageTextFragment;
+import me.monster.hencoderplusview.fragment.PieFragment;
+import me.monster.hencoderplusview.fragment.RoundAvatarFragment;
+import me.monster.hencoderplusview.fragment.SportFragment;
 
 /**
  * @author PVer
  */
 public class MainActivity extends AppCompatActivity {
 
-    private DashView mDashView;
-    private EditText etValue;
-    private SportsView spView;
-    private PieView mPieView;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        mDashView = findViewById(R.id.dash_board);
-        etValue = findViewById(R.id.et_value);
-//        spView = findViewById(R.id.dash_board);
+        TabLayout tbTabs = findViewById(R.id.tab_main);
+        ViewPager vpPager = findViewById(R.id.vp_main);
 
-        etValue.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        vpPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT) {
-                    String strEtValue = etValue.getText().toString().trim();
-//                    mDashView.setValue(Integer.parseInt(strEtValue));
-//                    spView.setValue(Integer.parseInt(strEtValue));
+            public Fragment getItem(int position) {
+                switch (position) {
+                    case 0:
+                        return DashFragment.newInstance();
+                    case 1:
+                        return ImageTextFragment.newInstance();
+                    case 2:
+                        return PieFragment.newInstance();
+                    case 3:
+                        return RoundAvatarFragment.newInstance();
+                    default:
+                        return SportFragment.newInstance();
                 }
-                return false;
+            }
+
+            @Override
+            public int getCount() {
+                return 5;
+            }
+
+            @NonNull
+            @Override
+            public CharSequence getPageTitle(int position) {
+                switch (position) {
+                    case 0:
+                        return getString(R.string.dash_title);
+                    case 1:
+                        return getString(R.string.image_text_title);
+                    case 2:
+                        return getString(R.string.pie_title);
+                    case 3:
+                        return getString(R.string.round_avatar_title);
+                    case 4:
+                        return getString(R.string.sport_title);
+                    default:
+                        return "";
+                }
             }
         });
+        tbTabs.setupWithViewPager(vpPager);
     }
 }

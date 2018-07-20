@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <me.monster.hencoderplusview.view.ImageTextView
-        android:id="@+id/dash_board"
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_main"
         android:layout_width="match_parent"
-        android:layout_height="350dp" />
-
-    <EditText
-        android:id="@+id/et_value"
-        android:layout_width="60dp"
         android:layout_height="48dp"
-        android:inputType="number"
-        android:visibility="gone" />
+        app:tabMode="scrollable" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>
