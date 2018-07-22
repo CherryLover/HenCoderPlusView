@@ -19,4 +19,8 @@ public class ValueUtil {
     public static float dpToPixel(int dp) {
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, Resources.getSystem().getDisplayMetrics());
     }
+
+    public static float getCameraZ() {
+        return - 6 * Resources.getSystem().getDisplayMetrics().density;
+    }
 }
