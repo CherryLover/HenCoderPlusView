@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="me.monster.hencoderplusview.fragment.MaterialEditFragment">
 
@@ -23,8 +24,14 @@
         android:background="#29B6F6">
 
         <me.monster.hencoderplusview.view.MaterialEdit
+            android:id="@+id/material_edit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:errorEnable="true"
+            app:errorText="cuwo"
+            app:errorColor="@color/colorAccent"
+            app:errorTextSize="14sp"
+            android:hint="UserName" />
 
     </FrameLayout>
 
