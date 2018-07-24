@@ -1,16 +1,16 @@
 package me.monster.hencoderplusview.view;
 
 import android.animation.ObjectAnimator;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+
+import java.util.Map;
 
 import me.monster.hencoderplusview.R;
 import me.monster.hencoderplusview.util.ValueUtil;
@@ -29,10 +29,7 @@ public class MaterialEdit extends android.support.v7.widget.AppCompatEditText {
     private static float LABEL_OFFSET_Y = ValueUtil.dpToPixel(16);
     private static float ERROR_SPACE = ValueUtil.dpToPixel(8);
 
-    private boolean errorEnable = false;
-    private float errorTextSize = ValueUtil.dpToPixel(14);
-    private String errorText = "";
-    private int errorColor = Color.parseColor("#D50000");
+    private int labelColor;
 
     private ObjectAnimator alphaAnimator = ObjectAnimator.ofFloat(this, "labelAlpha", 1);
 
@@ -73,13 +70,10 @@ public class MaterialEdit extends android.support.v7.widget.AppCompatEditText {
         super(context);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public MaterialEdit(Context context, AttributeSet attrs) {
         super(context, attrs);
-        TypedArray attrArray = context.obtainStyledAttributes(attrs, R.styleable.MaterialEdit);
-        boolean errorEnable = attrArray.getBoolean(R.styleable.MaterialEdit_errorEnable, false);
-        setErrorEnable(errorEnable);
-
-        attrArray.recycle();
+        setLabelColor(context.getColor(R.color.colorAccent));;
     }
 
     public float getLabelAlpha() {
@@ -91,41 +85,17 @@ public class MaterialEdit extends android.support.v7.widget.AppCompatEditText {
         invalidate();
     }
 
-    public boolean isErrorEnable() {
-        return errorEnable;
+    public int getLabelColor() {
+        return labelColor;
     }
 
-    public void setErrorEnable(boolean errorEnable) {
-        this.errorEnable = errorEnable;
-        setPadding(getPaddingLeft(), getPaddingTop(), getPaddingRight(), (int) (getPaddingBottom()+ errorTextSize + ERROR_SPACE));
+    /**
+     * Color id
+     * @param labelColor labelColor
+     */
+    public void setLabelColor(int labelColor) {
+        this.labelColor = labelColor;
         requestLayout();
-    }
-
-    public float getErrorTextSize() {
-        return errorTextSize;
-    }
-
-    public void setErrorTextSize(int errorTextSize) {
-        this.errorTextSize = ValueUtil.dpToPixel(errorTextSize);
-        invalidate();
-    }
-
-    public String getErrorText() {
-        return errorText;
-    }
-
-    public void setErrorText(String errorText) {
-        this.errorText = errorText;
-        invalidate();
-    }
-
-    public int getErrorColor() {
-        return errorColor;
-    }
-
-    public void setErrorColor(int errorColor) {
-        this.errorColor = errorColor;
-        invalidate();
     }
 
     @Override
@@ -133,14 +103,15 @@ public class MaterialEdit extends android.support.v7.widget.AppCompatEditText {
         super.onDraw(canvas);
         if (getText().length() != 0) {
             mPaint.setAlpha((int) (labelAlpha * 0xff));
+            mPaint.setColor(labelColor);
             float moveLength = (1 - labelAlpha) * LABEL_OFFSET_Y;
             canvas.drawText(getHint().toString(), LABEL_OFFSET, LABEL_PADDING + LABEL_SIZE + moveLength, mPaint);
             mPaint.setAlpha(1);
         }
-        if (errorEnable) {
-            mPaint.setColor(errorColor);
-            mPaint.setTextSize(errorTextSize);
-            canvas.drawText(errorText, LABEL_OFFSET, getHeight(), mPaint);
-        }
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 }

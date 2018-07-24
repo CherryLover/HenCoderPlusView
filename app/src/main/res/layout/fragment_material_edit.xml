@@ -27,10 +27,6 @@
             android:id="@+id/material_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:errorEnable="true"
-            app:errorText="cuwo"
-            app:errorColor="@color/colorAccent"
-            app:errorTextSize="14sp"
             android:hint="UserName" />
 
     </FrameLayout>
