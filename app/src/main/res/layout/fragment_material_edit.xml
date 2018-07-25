@@ -1,33 +1,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="me.monster.hencoderplusview.fragment.MaterialEditFragment">
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="48dp" />
+
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#558B2F">
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#29B6F6">
+        android:layout_height="wrap_content">
 
         <me.monster.hencoderplusview.view.MaterialEdit
             android:id="@+id/material_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="UserName" />
+            android:hint="手机号"
+            android:inputType="number"
+            app:errorColor="@color/colorAccent"
+            app:errorEnable="true"
+            app:errorText="超出手机号长度"
+            app:errorTextSize="14sp" />
 
     </FrameLayout>
 

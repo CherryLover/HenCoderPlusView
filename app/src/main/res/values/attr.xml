@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="MaterialEdit">
+        <attr name="errorEnable" format="boolean" />
+        <attr name="errorText" format="string" />
+        <attr name="errorColor" format="color" />
+        <attr name="errorTextSize" format="dimension" />
         <attr name="icon" format="reference"/>
     </declare-styleable>
 </resources>
