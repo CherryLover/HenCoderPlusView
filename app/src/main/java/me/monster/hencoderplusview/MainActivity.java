@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.monster.hencoderplusview.fragment.CircleViewFragment;
 import me.monster.hencoderplusview.fragment.DashFragment;
 import me.monster.hencoderplusview.fragment.ImageTextFragment;
 import me.monster.hencoderplusview.fragment.MaterialEditFragment;
@@ -18,6 +19,8 @@ import me.monster.hencoderplusview.fragment.PieFragment;
 import me.monster.hencoderplusview.fragment.PlusViewFragment;
 import me.monster.hencoderplusview.fragment.RoundAvatarFragment;
 import me.monster.hencoderplusview.fragment.SportFragment;
+import me.monster.hencoderplusview.fragment.SquareFragment;
+import me.monster.hencoderplusview.fragment.TagLayoutFragment;
 
 /**
  * @author PVer
@@ -32,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        allFragmentList.add(TagLayoutFragment.newInstance());
+        allFragmentList.add(CircleViewFragment.newInstance());
+        allFragmentList.add(SquareFragment.newInstance());
         allFragmentList.add(MaterialEditFragment.newInstance());
         allFragmentList.add(PlusViewFragment.newInstance());
         allFragmentList.add(DashFragment.newInstance());
@@ -40,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
         allFragmentList.add(RoundAvatarFragment.newInstance());
         allFragmentList.add(SportFragment.newInstance());
 
+        allTitleList.add("流布局");
+        allTitleList.add("圆形头像");
+        allTitleList.add("正方形头像");
         allTitleList.add("自定义 EditText");
         allTitleList.add("翻转");
         allTitleList.add(getString(R.string.dash_title));
