@@ -1,7 +1,11 @@
 package me.monster.hencoderplusview.util;
 
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.TypedValue;
+
+import me.monster.hencoderplusview.R;
 
 /**
  * @description
@@ -22,5 +26,16 @@ public class ValueUtil {
 
     public static float getCameraZ() {
         return - 6 * Resources.getSystem().getDisplayMetrics().density;
+    }
+
+    private Bitmap getBitMap(Resources resources ,int width) {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        options.inMutable = true;
+        BitmapFactory.decodeResource(resources, R.drawable.wx_avatat, options);
+        options.inJustDecodeBounds = false;
+        options.inDensity = options.outWidth;
+        options.inTargetDensity = width;
+        return BitmapFactory.decodeResource(resources, R.drawable.wx_avatat, options);
     }
 }

@@ -9,8 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import me.monster.hencoderplusview.R;
+import me.monster.hencoderplusview.util.ValueUtil;
 
 
+/**
+ * @author Awesome
+ */
 public class CircleViewFragment extends Fragment {
 
     public CircleViewFragment() {

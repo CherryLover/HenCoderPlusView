@@ -6,12 +6,18 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import me.monster.hencoderplusview.util.ValueUtil;
+
 /**
  * @author Awesome
  * @description
  * @date 2018-07-25 8:10
  */
 public class CircleView extends View {
+
+    private int radius = (int) ValueUtil.dpToPixel(100);
+    private int padding = (int) ValueUtil.dpToPixel(16);
+
     public CircleView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
@@ -29,5 +35,8 @@ public class CircleView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+
+
     }
 }

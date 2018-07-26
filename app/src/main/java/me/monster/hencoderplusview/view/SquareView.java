@@ -4,14 +4,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.view.View;
 
 /**
  * @author Awesome
  * @description
  * @date 2018-07-25 8:10
  */
-public class SquareView extends View {
+public class SquareView extends android.support.v7.widget.AppCompatImageView {
 
     public SquareView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -30,6 +29,10 @@ public class SquareView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int measuredWidth = getMeasuredWidth();
+        int measuredHeight = getMeasuredHeight();
+        int size = Math.min(measuredHeight, measuredWidth);
+        setMeasuredDimension(size, size);
     }
 
 }
