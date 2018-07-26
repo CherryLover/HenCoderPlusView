@@ -1,13 +1,73 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="me.monster.hencoderplusview.fragment.TagLayoutFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <me.monster.hencoderplusview.view.TagLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp">
 
-</FrameLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:background="@drawable/corner_bg"
+            android:padding="16dp"
+            android:text="开不了口" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:background="@drawable/corner_bg"
+            android:padding="16dp"
+            android:text="一个人" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:background="@drawable/corner_bg"
+            android:padding="16dp"
+            android:text="特别的爱给特别的你" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:background="@drawable/corner_bg"
+            android:padding="16dp"
+            android:text="演员" />
+
+        <Button
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corner_bg"
+            android:padding="16dp"
+            android:text="山丘" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:background="@drawable/corner_bg"
+            android:padding="16dp"
+            android:text="漂洋过海来看你" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:background="@drawable/corner_bg"
+            android:padding="16dp"
+            android:text="IF You" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:background="@drawable/corner_bg"
+            android:padding="16dp"
+            android:text="才华有限公司" />
+    </me.monster.hencoderplusview.view.TagLayout>
+
+
+</LinearLayout>

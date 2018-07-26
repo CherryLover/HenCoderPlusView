@@ -28,7 +28,7 @@ public class ValueUtil {
         return - 6 * Resources.getSystem().getDisplayMetrics().density;
     }
 
-    private Bitmap getBitMap(Resources resources ,int width) {
+    public static Bitmap getBitMap(Resources resources ,int width) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         options.inMutable = true;
