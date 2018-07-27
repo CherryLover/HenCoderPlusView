@@ -6,8 +6,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import me.monster.hencoderplusview.R;
+import me.monster.hencoderplusview.view.TagLayout;
 
 /**
  * @author Awesome
@@ -29,7 +31,26 @@ public class TagLayoutFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_tag_layout, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_tag_layout, container, false);
+        TagLayout tagLayout = rootView.findViewById(R.id.tag_layout);
+        Button btnAdd = rootView.findViewById(R.id.btn_add);
+        Button btnRemove = rootView.findViewById(R.id.btn_remove);
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        return rootView;
     }
 
 }
