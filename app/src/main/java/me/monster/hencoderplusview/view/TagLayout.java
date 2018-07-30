@@ -37,6 +37,7 @@ public class TagLayout extends ViewGroup {
             childs = Arrays.copyOf(childs, childCount);
         }
 
+        // TODO: 2018-07-30 增加 margin
         for (int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
             Rect childRect = childs[i];
