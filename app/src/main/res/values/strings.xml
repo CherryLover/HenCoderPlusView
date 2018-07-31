@@ -11,4 +11,10 @@
     <string name="pie_title">PieView</string>
     <string name="round_avatar_title">RoundAvatar</string>
     <string name="sport_title">SportView</string>
+    <string name="filpboard_title">翻转</string>
+    <string name="custom_material_title">自定义 EditText</string>
+    <string name="square_image">正方形头像</string>
+    <string name="round_avatar">圆形头像</string>
+    <string name="taglayout_title">流布局</string>
+    <string name="imageViwer_title">ImageViewer</string>
 </resources>

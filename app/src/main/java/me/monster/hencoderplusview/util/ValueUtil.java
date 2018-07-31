@@ -32,10 +32,10 @@ public class ValueUtil {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         options.inMutable = true;
-        BitmapFactory.decodeResource(resources, R.drawable.wx_avatat, options);
+        BitmapFactory.decodeResource(resources, R.drawable.test_avatar, options);
         options.inJustDecodeBounds = false;
         options.inDensity = options.outWidth;
         options.inTargetDensity = width;
-        return BitmapFactory.decodeResource(resources, R.drawable.wx_avatat, options);
+        return BitmapFactory.decodeResource(resources, R.drawable.test_avatar, options);
     }
 }

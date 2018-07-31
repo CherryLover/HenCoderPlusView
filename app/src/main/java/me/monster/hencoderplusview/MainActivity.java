@@ -14,6 +14,7 @@ import java.util.List;
 import me.monster.hencoderplusview.fragment.CircleViewFragment;
 import me.monster.hencoderplusview.fragment.DashFragment;
 import me.monster.hencoderplusview.fragment.ImageTextFragment;
+import me.monster.hencoderplusview.fragment.ImageViewerFragment;
 import me.monster.hencoderplusview.fragment.MaterialEditFragment;
 import me.monster.hencoderplusview.fragment.PieFragment;
 import me.monster.hencoderplusview.fragment.PlusViewFragment;
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        allFragmentList.add(ImageViewerFragment.newInstance());
         allFragmentList.add(TagLayoutFragment.newInstance());
         allFragmentList.add(CircleViewFragment.newInstance());
         allFragmentList.add(SquareFragment.newInstance());
@@ -46,11 +49,12 @@ public class MainActivity extends AppCompatActivity {
         allFragmentList.add(RoundAvatarFragment.newInstance());
         allFragmentList.add(SportFragment.newInstance());
 
-        allTitleList.add("流布局");
-        allTitleList.add("圆形头像");
-        allTitleList.add("正方形头像");
-        allTitleList.add("自定义 EditText");
-        allTitleList.add("翻转");
+        allTitleList.add(getString(R.string.imageViwer_title));
+        allTitleList.add(getString(R.string.taglayout_title));
+        allTitleList.add(getString(R.string.round_avatar));
+        allTitleList.add(getString(R.string.square_image));
+        allTitleList.add(getString(R.string.custom_material_title));
+        allTitleList.add(getString(R.string.filpboard_title));
         allTitleList.add(getString(R.string.dash_title));
         allTitleList.add(getString(R.string.image_text_title));
         allTitleList.add(getString(R.string.pie_title));
