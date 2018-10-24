@@ -2,8 +2,8 @@
     <string name="app_name">HenCoderPlusView</string>
     <string name="test_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi condimentum metus ante, eu pretium nulla fringilla vitae. Sed commodo lorem in lacus aliquam, at finibus purus pretium. Vivamus sit amet consequat magna. Duis ac arcu ac arcu finibus egestas. Donec nec egestas magna. Vivamus purus quam, auctor eu aliquet vel, iaculis et dui. Quisque posuere ullamcorper ligula, id laoreet nibh venenatis non. Vivamus maximus felis sed ex interdum, a finibus magna interdum. Nam quis lectus tellus. Praesent sed suscipit risus. Mauris augue augue, consequat vitae lacinia at, convallis nec sem. Sed ac magna lacinia urna sollicitudin pharetra. Nullam at ipsum lobortis, feugiat tellus ac, ultrices risus. Nulla suscipit blandit nunc vel scelerisque. Praesent a elementum lectus.</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="radarView">雷达图</string>
     <string name="dash_hint">刻度</string>
     <string name="sport_hint">百分比</string>
     <string name="dash_title">DashView</string>

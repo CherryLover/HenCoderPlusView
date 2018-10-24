@@ -1,5 +1,7 @@
 package me.monster.hencoderplusview;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
@@ -18,10 +20,12 @@ import me.monster.hencoderplusview.fragment.ImageViewerFragment;
 import me.monster.hencoderplusview.fragment.MaterialEditFragment;
 import me.monster.hencoderplusview.fragment.PieFragment;
 import me.monster.hencoderplusview.fragment.PlusViewFragment;
+import me.monster.hencoderplusview.fragment.RadarFragment;
 import me.monster.hencoderplusview.fragment.RoundAvatarFragment;
 import me.monster.hencoderplusview.fragment.SportFragment;
 import me.monster.hencoderplusview.fragment.SquareFragment;
 import me.monster.hencoderplusview.fragment.TagLayoutFragment;
+import me.monster.hencoderplusview.view.RadarView;
 
 /**
  * @author PVer
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        allFragmentList.add(RadarFragment.newInstance());
         allFragmentList.add(ImageViewerFragment.newInstance());
         allFragmentList.add(TagLayoutFragment.newInstance());
         allFragmentList.add(CircleViewFragment.newInstance());
@@ -49,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         allFragmentList.add(RoundAvatarFragment.newInstance());
         allFragmentList.add(SportFragment.newInstance());
 
+        allTitleList.add("雷达图");
         allTitleList.add(getString(R.string.imageViwer_title));
         allTitleList.add(getString(R.string.taglayout_title));
         allTitleList.add(getString(R.string.round_avatar));
@@ -82,5 +88,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         tbTabs.setupWithViewPager(vpPager);
+    }
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, MainActivity.class);
+        context.startActivity(starter);
     }
 }
