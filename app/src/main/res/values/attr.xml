@@ -7,4 +7,10 @@
         <attr name="errorTextSize" format="dimension" />
         <attr name="icon" format="reference"/>
     </declare-styleable>
+    <declare-styleable name="RadarView">
+        <attr name="circleNumber" format="integer"/>
+        <attr name="spiderColor" format="color"/>
+        <attr name="fillColor" format="color"/>
+        <attr name="bgColor" format="color"/>
+    </declare-styleable>
 </resources>
