@@ -32,6 +32,7 @@ public class RadarView extends View {
     private int fillColor;
     private int backgroundColor;
     private int circleCount;
+    private boolean showReference;
 
     private float drawRadius;
     private float sweepStartAngle;
@@ -46,8 +47,8 @@ public class RadarView extends View {
         spiderWebColor = typedArray.getColor(R.styleable.RadarView_spiderColor, Color.WHITE);
         fillColor = typedArray.getColor(R.styleable.RadarView_fillColor, Color.parseColor("#72F64A"));
         backgroundColor = typedArray.getColor(R.styleable.RadarView_bgColor, Color.parseColor("#5F6061"));
-        int default_circle_count = 3;
-        circleCount = typedArray.getInt(R.styleable.RadarView_circleNumber, default_circle_count);
+        showReference = typedArray.getBoolean(R.styleable.RadarView_showReferenceLine, true);
+        circleCount = typedArray.getInt(R.styleable.RadarView_circleNumber, 3);
 
         typedArray.recycle();
 
@@ -181,13 +182,61 @@ public class RadarView extends View {
      */
     private void drawBaseLayer(Canvas canvas, float centerX, float centerY) {
         resetPaint4Base();
-        canvas.drawLine(centerX - drawRadius, centerY, centerX + drawRadius, centerY, mPaint);
-        canvas.drawLine(centerX, centerY - drawRadius, centerX, centerY + drawRadius, mPaint);
+
+        if (showReference) {
+            canvas.drawLine(centerX - drawRadius, centerY, centerX + drawRadius, centerY, mPaint);
+            canvas.drawLine(centerX, centerY - drawRadius, centerX, centerY + drawRadius, mPaint);
+        }
 
         for (int i = 0; i < circleCount; i++) {
             float circleRadius = ValueUtil.dpToPixel((int) (max_radius - (max_radius / circleCount) * i));
             canvas.drawCircle(centerX, centerY, circleRadius, mPaint);
         }
+    }
+
+    public void setCircleCount(int circleCount) {
+        this.circleCount = circleCount;
+        invalidate();
+    }
+
+    public int getCircleCount() {
+        return circleCount;
+    }
+
+    public void setSpiderWebColor(int spiderWebColor) {
+        this.spiderWebColor = spiderWebColor;
+        invalidate();
+    }
+
+    public int getSpiderWebColor() {
+        return spiderWebColor;
+    }
+
+    public void setFillColor(int fillColor) {
+        this.fillColor = fillColor;
+        invalidate();
+    }
+
+    public int getFillColor() {
+        return fillColor;
+    }
+
+    public void setBackgroundColor(int backgroundColor) {
+        this.backgroundColor = backgroundColor;
+        invalidate();
+    }
+
+    public int getBackgroundColor() {
+        return backgroundColor;
+    }
+
+    public void setShowReference(boolean showReference) {
+        this.showReference = showReference;
+        invalidate();
+    }
+
+    public boolean isShowReference() {
+        return showReference;
     }
 
     public void setSweepStartAngle(float sweepStartAngle) {

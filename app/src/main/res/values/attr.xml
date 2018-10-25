@@ -9,6 +9,7 @@
     </declare-styleable>
     <declare-styleable name="RadarView">
         <attr name="circleNumber" format="integer"/>
+        <attr name="showReferenceLine" format="boolean"/>
         <attr name="spiderColor" format="color"/>
         <attr name="fillColor" format="color"/>
         <attr name="bgColor" format="color"/>

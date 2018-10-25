@@ -38,9 +38,12 @@ public class RadarFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_radar, container, false);
         radarView = rootView.findViewById(R.id.radar_view);
 
+        radarView.setShowReference(false);
+
         rootView.findViewById(R.id.btn_start_ani).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                radarView.setShowReference(true);
                 radarView.startAnimator();
             }
         });
